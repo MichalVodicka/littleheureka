@@ -2,7 +2,7 @@
 
 Minimalistic version of heureka.
 
-## tech stack
+## Tech stack
 
 - React
 - Vite
@@ -12,9 +12,10 @@ Minimalistic version of heureka.
 
 ## First start
 
-`npm install
-npm run start`
-
+```
+npm install
+npm run start
+```
 - vite tells you url and the port where to find the app (highly likely it will be localhost:5173)
 
 ## convertion open api to TypeScript
@@ -39,4 +40,3 @@ I do use css modules without sass/less
 - better error handling (i.e. error boundries)
 - data loading is cumbersome >> to many request to the api
 - more standard styling like https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb
-
