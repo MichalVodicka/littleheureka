@@ -40,6 +40,3 @@ I do use css modules without sass/less
 - data loading is cumbersome >> to many request to the api
 - more standard styling like https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb
 
-## known issues
-
-- sometimes there is no read more description button

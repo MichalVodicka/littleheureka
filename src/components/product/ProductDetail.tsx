@@ -17,6 +17,8 @@ const ProductDetail: React.FC<{}> = () => {
   const [showAllDescription, setShowAllDescription] = useState<boolean>(false);
   const [showAllOffers, setShowAllOffers] = useState<boolean>(false);
   const [selectedImage, setSelectedImage] = useState<number>(0);
+  const [isDescriptionOverflowing, setIsDescriptionOverflowing] =
+    useState<boolean>(false);
 
   const { productId, categoryId } = useParams();
 
@@ -43,6 +45,18 @@ const ProductDetail: React.FC<{}> = () => {
     productId && fetchProduct({ id: productId.toString() });
   }, []);
 
+  // naive chech if the text if overflowing its container
+  // "watching" resizing browser window would be better solution
+  useEffect(
+    () =>
+      descriptionContainer.current &&
+      descriptionContainer.current?.scrollHeight >
+        descriptionContainer.current?.clientHeight
+        ? setIsDescriptionOverflowing(true)
+        : setIsDescriptionOverflowing(false),
+    [ol, pl, cl],
+  );
+
   const images: string[] = useMemo(() => {
     if (!offers) {
       return [];
@@ -64,16 +78,6 @@ const ProductDetail: React.FC<{}> = () => {
     (image.target as HTMLImageElement).src = "/noimage.svg";
   };
 
-  // naive chech if the text if overflowing its container
-  // "watching" resizing browser window would be better solution
-  const isOverflowing = useMemo(() => {
-    const box = descriptionContainer.current;
-    if (box && box.scrollHeight > box.clientHeight) {
-      return true;
-    }
-    return false;
-  }, [descriptionContainer.current?.clientHeight]);
-
   const handleShowMoreDescription = () => {
     if (descriptionContainer.current) {
       descriptionContainer.current.style.maxHeight = "unset";
@@ -85,7 +89,7 @@ const ProductDetail: React.FC<{}> = () => {
   const handleShowMoreOffers = () => setShowAllOffers(true);
 
   // calculate how many offers should be visible. e.g. 5 or all
-  const noOffersToShow = useMemo(() => {
+  const countOffersToShow = useMemo(() => {
     return showAllOffers ? undefined : VISIBLE_OFFERS_DEFULT;
   }, [showAllOffers]);
 
@@ -147,7 +151,7 @@ const ProductDetail: React.FC<{}> = () => {
         <div ref={descriptionContainer} className={styles.description}>
           {description}
         </div>
-        {isOverflowing && !showAllDescription && (
+        {isDescriptionOverflowing && !showAllDescription && (
           <div
             className={styles.showMoreLink}
             onClick={handleShowMoreDescription}
@@ -163,16 +167,15 @@ const ProductDetail: React.FC<{}> = () => {
 
       <div className={styles.offers}>
         {offers
-          ?.slice(0, noOffersToShow)
+          ?.slice(0, countOffersToShow)
           .map((offer) => <Offer key={offer.id} {...offer} />)}
 
         {/* show "show more" button only when there is reason for it */}
         {!showAllOffers &&
-          noOffersToShow &&
-          noOffersToShow > 0 &&
+          countOffersToShow &&
+          countOffersToShow > 0 &&
           total &&
-          total > noOffersToShow &&
-          !showAllDescription && (
+          total > countOffersToShow && (
             <div className={styles.showMoreLink} onClick={handleShowMoreOffers}>
               <a>Zobrazit vice</a>
             </div>
