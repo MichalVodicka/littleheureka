@@ -66,11 +66,16 @@
 
 .hr {
   width: 100%;
-  overflow: hidden;
+  max-width: 100%;
   grid-column-start: 1;
   grid-column-end: 3;
   grid-row-start: 2;
   grid-row-end: 3;
+}
+
+.hr hr {
+  border-top: 2px dashed #aaa;
+  border-bottom: 2px dashed #777;
 }
 
 .header {

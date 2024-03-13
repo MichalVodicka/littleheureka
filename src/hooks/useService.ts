@@ -173,6 +173,8 @@ const validators: {
   },
 };
 
+const DOMAIN = "lh-api.fly.dev";
+
 type tm<S extends TService, M extends TMethod<S>> = (typeof validators)[S][M];
 type A<S extends TService, M extends TMethod<S>> =
   tm<S, M> extends { 200: ZodType } ? z.infer<tm<S, M>[200]> : never;
@@ -206,7 +208,6 @@ const useService = <S extends TService, M extends TMethod<S>>(
     }
 
     // in real application would make sense store DOMAIN/PORT in .env or ci/cd
-    const DOMAIN = "p501.michalvodicka.eu";
     const url = new URL(service + search, `https://${DOMAIN}`);
     url.port = "443";
 
@@ -370,7 +371,6 @@ const useServicePagination = <S extends TService, M extends TMethod<S>>(
     }
 
     // in real application would make sense store DOMAIN/PORT in .env or ci/cd
-    const DOMAIN = "p501.michalvodicka.eu";
     const url = new URL(service + search, `https://${DOMAIN}`);
     url.port = "443";
 
