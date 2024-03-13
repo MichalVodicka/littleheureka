@@ -2,6 +2,7 @@
   "name": "little-heureka",
   "version": "0.0.1",
   "description": "An interview task",
+  "homepage":"https://littleheureka.pages.dev/",
   "main": "dist/index.js",
   "scripts": {
     "start": "vite",
