@@ -1,0 +1,17 @@
+.categories {
+  padding: 1rem;
+  font-size: 1.2 rem;
+  min-width: 250px;
+}
+.item {
+  padding: 5px;
+}
+
+.item:hover {
+  background-color: #ddd;
+}
+
+.item.selected {
+  background-color: #bbb;
+  border-radius: 2px;
+}

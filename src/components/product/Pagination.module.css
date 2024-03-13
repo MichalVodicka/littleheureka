@@ -1,0 +1,13 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.link {
+  cursor: pointer;
+}
+
+.link:hover {
+  text-decoration: underline;
+}

@@ -1,0 +1,41 @@
+{
+  "name": "little-heureka",
+  "version": "0.0.1",
+  "description": "An interview task",
+  "main": "dist/index.js",
+  "scripts": {
+    "start": "vite",
+    "build": "vite build",
+    "serve": "vite --profile",
+    "test": "viteest",
+    "prettier": "prettier . --write",
+    "generateApiTypes": "openapi-typescript https://lh-api.fly.dev/docs -o ./src/services/api.ts"
+  },
+  "type": "module",
+  "keywords": [],
+  "author": "Michal Vodicka",
+  "license": "MIT",
+  "dependencies": {
+    "jsdom": "~24.0.0",
+    "react": "~18.2.0",
+    "react-dom": "~18.2.0",
+    "react-router-dom": "^6.22.2",
+    "zod": "~3.22.4",
+    "zustand": "^4.5.2"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "~6.2.1",
+    "@testing-library/react": "~14.1.2",
+    "@types/react": "~18.2.48",
+    "@types/react-dom": "~18.2.18",
+    "@types/react-router-dom": "^5.3.3",
+    "@vitejs/plugin-react": "~4.2.1",
+    "prettier": "~3.2.4",
+    "sass": "^1.71.1",
+    "typescript": "~5.3.3",
+    "openapi-typescript": "^6.7.4",
+    "vite": "~5.0.12",
+    "vite-plugin-mkcert": "^1.17.4",
+    "vitest": "~1.2.1"
+  }
+}

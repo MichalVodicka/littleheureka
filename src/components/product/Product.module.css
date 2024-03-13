@@ -1,0 +1,57 @@
+.product {
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid #888;
+  border-radius: 8px;
+  display: grid;
+  grid-template-columns: 150px auto 150px;
+  grid-template-rows: 160px;
+  gap: 20px;
+}
+
+.img {
+  display: flex;
+  justify-items: center;
+  justify-content: center;
+
+  align-items: center;
+  height: 100%;
+}
+
+.img img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.title h2 {
+  font-size: 1.3em;
+  font-weight: 700;
+}
+
+.pricing {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+  justify-items: center;
+}
+
+.compareprices {
+  display: block;
+  padding: 0.5em;
+  border: 1px solid #666;
+  border-radius: 3px;
+  transition: 0.3s;
+}
+
+.compareprices:hover {
+  background-color: #aaa;
+  border-color: #aaa;
+}
+
+.description {
+  height: 100px;
+  overflow: hidden;
+  white-space: wrap;
+  text-overflow: ellipsis;
+}

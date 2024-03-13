@@ -1,0 +1,31 @@
+.categoryCard {
+  border-radius: 8px;
+  border: 1px solid #888;
+  width: 200px;
+  max-width: 100%;
+  box-sizing: content-box;
+  max-height: 300px;
+  padding: 1em;
+  gap: 1em;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 200px auto;
+  justify-items: center;
+  overflow: auto;
+}
+
+.linkWrapper:hover {
+  text-decoration: underline;
+}
+
+.img {
+  display: flex;
+  justify-items: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.img img {
+  max-width: 100%;
+  max-height: 100%;
+}

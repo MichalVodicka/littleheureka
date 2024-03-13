@@ -1,0 +1,18 @@
+.categoriesCards {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  padding: 1rem;
+  flex-wrap: wrap;
+}
+
+.card {
+  border: 1px solid #444;
+  width: 150px;
+  height: 150px;
+}
+
+.card:hover {
+  filter: drop-shadow(2px 4px 8px #777777);
+}

@@ -1,0 +1,41 @@
+.offer {
+  display: grid;
+  grid-template-columns: auto 150px 150px;
+}
+
+.offer > div {
+  padding: 10px;
+  display: flex;
+  justify-items: center;
+
+  align-items: center;
+  border: 1px solid #000;
+}
+
+.title {
+  justify-content: left;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+
+.buy {
+  justify-content: center;
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 2;
+  background-color: #aaa;
+}
+
+.buy a:hover {
+  text-decoration: underline;
+}
+.price {
+  justify-content: right;
+  grid-column-start: 3;
+  grid-column-end: 4;
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
