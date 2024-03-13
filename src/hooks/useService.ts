@@ -25,7 +25,7 @@ type THttpcodes2<S extends TService, M extends TMethod<S>> = {
   [K in keyof tmp<S, M>]: tmp<S, M>[K] extends { content: never } ? never : K;
 }[keyof tmp<S, M>];
 
-// inpu data for the api
+// input data for the api
 type TServiceInput<
   S extends TService,
   M extends TMethod<S>,
@@ -48,7 +48,7 @@ type TServiceOutput<
   ? paths[S][M]["responses"][C]["content"]["application/json"]
   : never;
 
-// Get types for http status code which we can validate (non empty responses, etc) qqqq
+// Get types for http status code which we can validate (non empty responses, etc)
 // folowing typing makes sure we implement all and only validation for services extracted from paths
 // validation criterias have to cover 100% of api IO, there can be more validation criteas but not less. i.e. an interceptor adds timestamp
 const validators: {
@@ -175,6 +175,7 @@ const validators: {
 
 const DOMAIN = "lh-api.fly.dev";
 
+// extract data type for 200 response
 type tm<S extends TService, M extends TMethod<S>> = (typeof validators)[S][M];
 type A<S extends TService, M extends TMethod<S>> =
   tm<S, M> extends { 200: ZodType } ? z.infer<tm<S, M>[200]> : never;

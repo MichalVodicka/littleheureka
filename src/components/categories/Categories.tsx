@@ -1,5 +1,6 @@
 import { Link, useParams } from "react-router-dom";
 import styles from "./Categories.module.css";
+
 type TCategory = {
   id: number;
   title: string;
@@ -8,6 +9,7 @@ type TCategory = {
 type CategoriesProps = {
   categories: TCategory[];
 };
+
 const Categories: React.FC<CategoriesProps> = ({ categories }) => {
   const { categoryId } = useParams();
   return (

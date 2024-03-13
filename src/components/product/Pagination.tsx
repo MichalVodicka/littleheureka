@@ -32,6 +32,7 @@ const Pagination: React.FC<PaginationProps> = ({
           prev{" "}
         </div>
       ) : null}
+
       {Array(pagesCount)
         .fill(1)
         .map((_, idx) => (
@@ -43,6 +44,7 @@ const Pagination: React.FC<PaginationProps> = ({
             {idx + 1}
           </div>
         ))}
+
       {currentPageNo < pagesCount - 1 ? (
         <div className={styles.link} onClick={handleNext}>
           {" "}

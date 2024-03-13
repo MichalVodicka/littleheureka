@@ -1,4 +1,4 @@
-import { Suspense, useEffect } from "react";
+import { useEffect } from "react";
 import { useServicePagination } from "../../hooks/useService";
 import { useParams, useSearchParams } from "react-router-dom";
 import Pagination from "../product/Pagination";
@@ -14,16 +14,14 @@ const Category: React.FC = () => {
     useServicePagination("/products", "get", PAGESIZE, pageNo * PAGESIZE);
 
   const { categoryId } = useParams();
-  console.log(error);
+
   const handlePrev = () => setSearchParams({ pageNo: String(pageNo - 1) });
   const handleNext = () => setSearchParams({ pageNo: String(pageNo + 1) });
   const handleSetPage = (pageNo: number | string) =>
     setSearchParams({ pageNo: String(pageNo) });
+
   useEffect(() => {
     categoryId && fetchInit({ categoryId: categoryId });
-  }, [categoryId, pageNo]);
-  useEffect(() => {
-    console.log("loadign");
   }, [categoryId, pageNo]);
 
   return !loading ? (

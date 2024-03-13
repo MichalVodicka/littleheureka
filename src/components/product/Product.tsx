@@ -2,20 +2,23 @@ import { Link } from "react-router-dom";
 import styles from "./Product.module.css";
 import { ReactEventHandler, useEffect, useMemo } from "react";
 import { useServicePagination } from "../../hooks/useService";
+
 type ProductProps = {
   id: number;
   title: string;
   categoryId: number;
 };
+
 const Product: React.FC<ProductProps> = ({ id, title, categoryId }) => {
   // get description and price range
-  const [offers, loading, error, fetchInit, fetchPrev, fetchNext, total] =
-    useServicePagination("/offers", "get", 0, 0);
+  const [offers, loading, error, fetchInit] = useServicePagination(
+    "/offers",
+    "get",
+    0,
+    0,
+  );
 
   useEffect(() => {
-    if (offers && offers?.length > 0) {
-      fetchNext();
-    }
     id && fetchInit({ productId: id.toString() });
   }, []);
 
@@ -56,42 +59,41 @@ const Product: React.FC<ProductProps> = ({ id, title, categoryId }) => {
 
   return (
     <div className={styles.product}>
-      <>
-        <div className={styles.img}>
-          {image && <img onError={handleImageError} src={image} />}{" "}
+      {error && <div>{error.toString()}</div>}
+      <div className={styles.img}>
+        {image && <img onError={handleImageError} src={image} />}{" "}
+      </div>
+      <div>
+        <div key={id} className={styles.title}>
+          <Link to={`/product/${id}/${categoryId}`}>
+            <h2>{title}</h2>
+          </Link>
         </div>
-        <div>
-          <div key={id} className={styles.title}>
-            <Link to={`/product/${id}/${categoryId}`}>
-              <h2>{title}</h2>
-            </Link>
-          </div>
-          {!loading && offers?.length ? (
-            <div className={styles.description}>{description}</div>
-          ) : (
-            <div>Loading ... </div>
-          )}
-        </div>
-        {!loading ? (
-          <div className={styles.pricing}>
-            <span>
-              {~~priceRange[0] +
-                (priceRange[0] !== priceRange[1]
-                  ? ` - ${~~priceRange[1]}`
-                  : "")}{" "}
-              Kc
-            </span>
-            <Link
-              to={`/product/${id}/${categoryId}`}
-              className={styles.compareprices}
-            >
-              <span>Porovnat ceny</span>
-            </Link>
-          </div>
+        {!loading && offers?.length ? (
+          <div className={styles.description}>{description}</div>
         ) : (
           <div>Loading ... </div>
         )}
-      </>
+      </div>
+      {!loading ? (
+        <div className={styles.pricing}>
+          <span>
+            {~~priceRange[0] +
+              (priceRange[0] !== priceRange[1]
+                ? ` - ${~~priceRange[1]}`
+                : "")}{" "}
+            Kc
+          </span>
+          <Link
+            to={`/product/${id}/${categoryId}`}
+            className={styles.compareprices}
+          >
+            <span>Porovnat ceny</span>
+          </Link>
+        </div>
+      ) : (
+        <div>Loading ... </div>
+      )}
     </div>
   );
 };
