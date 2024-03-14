@@ -2,7 +2,7 @@
   "name": "little-heureka",
   "version": "0.0.2",
   "description": "An interview task",
-  "homepage":"https://littleheureka.pages.dev/",
+  "homepage": "https://littleheureka.pages.dev/",
   "main": "dist/index.js",
   "scripts": {
     "start": "vite",
@@ -36,7 +36,6 @@
     "typescript": "~5.3.3",
     "openapi-typescript": "^6.7.4",
     "vite": "~5.0.12",
-    "vite-plugin-mkcert": "^1.17.4",
     "vitest": "~1.2.1"
   }
 }

@@ -6,7 +6,7 @@ import { Header } from "./components/header";
 import styles from "./App.module.css";
 import CategoriesCards from "./components/categories/CategoriesCards";
 import { useEffect } from "react";
-import { useService, useServicePagination } from "./hooks/useService";
+import { useServicePagination } from "./hooks/useService";
 import useCategoryStore from "./stores/category";
 import ProductDetail from "./components/product/ProductDetail";
 
@@ -33,6 +33,7 @@ const App = () => {
 
   return (
     <div className={styles.main}>
+      {error && <div>{error.toString()}</div>}
       <Header />
       <Routes>
         {/* Product detail (i.e. with all offers */}
@@ -43,10 +44,12 @@ const App = () => {
         {/* routes with the left categories navbar */}
         <Route
           element={
-            <div className={styles.twoColumn}>
-              <Categories categories={categories} />
-              <Outlet />
-            </div>
+            !loading && (
+              <div className={styles.twoColumn}>
+                <Categories categories={categories} />
+                <Outlet />
+              </div>
+            )
           }
         >
           <Route path="/category/:categoryId" element={<CategoryDetail />} />

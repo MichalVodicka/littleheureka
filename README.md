@@ -12,11 +12,11 @@ Minimalistic version of heureka.
 
 ## First start
 
-```
-npm install
-npm run start
-```
-- vite tells you url and the port where to find the app (highly likely it will be localhost:5173)
+`npm install
+npm run generateApiTypes
+npm run start`
+
+- vite tells you url and the port where to find the app (highly likely it will be http://localhost:5173)
 
 ## convertion open api to TypeScript
 
