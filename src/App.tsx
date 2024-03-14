@@ -1,7 +1,6 @@
 import { Outlet, Route, Routes } from "react-router-dom";
 import { Categories, CategoryDetail } from "./components/categories";
 
-import { Footer } from "./components/footer";
 import { Header } from "./components/header";
 import styles from "./App.module.css";
 import CategoriesCards from "./components/categories/CategoriesCards";
@@ -59,7 +58,6 @@ const App = () => {
           />
         </Route>
       </Routes>
-      <Footer />
     </div>
   );
 };
